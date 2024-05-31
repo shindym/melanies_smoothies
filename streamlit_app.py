@@ -24,9 +24,9 @@ if ingrediants:
     ingredients_string = ''
     for fruit in ingrediants:
         ingredients_string+=fruit + ' '
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients)
-            values ('""" + ingredients_string + """')"""
-    time_to_insert = st.button('Submit Order')
+        my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
+            values ('""" + ingredients_string + """','""" + name_on_order+ """')"""
+        time_to_insert = st.button('Submit Order')
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
