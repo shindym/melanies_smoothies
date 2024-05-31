@@ -24,7 +24,8 @@ if ingrediants:
     st.write("You selected:", ingrediants)
     ingredients_string = ''
     for fruit in ingrediants:
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(fruit + 'Nutritional Information')
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit)
         fv_df= st.dataframe(data=fruityvice_response.json(), use_container_width=True)
         ingredients_string+=fruit + ' '
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
